@@ -4,7 +4,6 @@ services:
     image: flyxdocker/snake-game
     container_name: snake
     user: "node"
-    working_dir: /app
     environment:
       - NODE_ENV=production
       - PORT=3000
