@@ -18,6 +18,14 @@ pipeline {
             }
         }
 
+        stage('SAST-SNYK') {
+            steps {
+                script {
+                    echo 'this is a test'
+                }
+            }
+        }
+
         stage('Push to Docker Hub') {
             steps {
                 script {
