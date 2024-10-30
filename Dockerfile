@@ -1,8 +1,22 @@
 FROM node:latest
+
+# Set working directory
 WORKDIR /app
+
+# Copy package.json and package-lock.json files to install dependencies
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
-RUN npm install socket.io-adapter
+
+# Copy the rest of the application files
 COPY . .
+
+# Remove existing node_modules if present
+RUN rm -rf ./node_modules && npm install
+
+# Expose the application port
 EXPOSE 3000
-CMD node app.js
+
+# Start the application
+CMD ["node", "app.js"]
