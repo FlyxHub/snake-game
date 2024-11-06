@@ -19,11 +19,13 @@ pipeline {
         }
 
         stage('SAST-SNYK') {
-            snykSecurity(
-                snykInstallation: 'Snyk',
-                snykTokenId: 'Synkid',
-                severity: 'critical'
-            )
+            steps {
+                snykSecurity(
+                    snykInstallation: 'Snyk',
+                    snykTokenId: 'Synkid',
+                    severity: 'critical'
+                )
+            }
         }
 
         stage('Push to Docker Hub') {
