@@ -22,7 +22,7 @@ pipeline {
             steps {
                 snykSecurity(
                     snykInstallation: 'Snyk',
-                    snykTokenId: 'Synkid',
+                    snykTokenId: 'snyk-creds',
                     severity: 'critical'
                 )
             }
