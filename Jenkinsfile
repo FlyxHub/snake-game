@@ -19,11 +19,11 @@ pipeline {
         }
 
         stage('SAST-SNYK') {
-            steps {
-                script {
-                    echo 'this is a test'
-                }
-            }
+            snykSecurity(
+                snykInstallation: 'Snyk',
+                snykTokenId: 'Synkid',
+                severity: 'critical'
+            )
         }
 
         stage('Push to Docker Hub') {
