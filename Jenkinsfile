@@ -28,6 +28,22 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            agent {
+                label 'AppServer'
+            }
+            steps {
+                script {
+                    def scannerHome = tool 'SonarQubeScanner'
+                    withSonarQubeEnv('sonarqube') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=gameapp1 \
+                            -Dsonar.sources=."
+                    }
+                }
+            }
+        }
+
         stage('Push to Docker Hub') {
             steps {
                 script {
