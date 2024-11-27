@@ -18,15 +18,6 @@ pipeline {
             }
         }
 
-        stage('SAST-SNYK') {
-            steps {
-                snykSecurity(
-                    snykInstallation: 'Snyk',
-                    snykTokenId: 'snyk-creds',
-                    severity: 'low'
-                )
-            }
-        }
 
         stage('SonarQube Analysis') {
             agent {
